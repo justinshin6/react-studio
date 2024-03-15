@@ -1,9 +1,72 @@
 /* Add styling for your page here */
-
 .App {
-
+    display: flex;
+    flex-direction: column;
+    background-color: #444a50;
 }
 
-.BakeryItem {
-  
+.header {
+    color: white;
+}
+
+.bakery-items {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* gap: 20px; */
+}
+
+.cart-items {
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-items h2 {
+    align-self: flex-start;
+}
+
+.cart-items-list {
+    margin-top: auto;
+}
+
+.card {
+    align-items: center;
+    text-align: center;
+    align-self: stretch;
+    background-color: #66727e;
+    margin: 2.5rem;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.card-image {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #444a50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #4b5e71;
+}
+
+@media (min-width: 768px) {
+    .App {
+        flex-direction: row;
+    }
 }
