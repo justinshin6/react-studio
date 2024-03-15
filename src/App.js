@@ -9,37 +9,44 @@ bakeryData.forEach((item) => {
 /* ############################################################## */
 
 function App() {
-  // TODO: use useState to create a state variable to hold the state of the cart
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [itemCounts, setItemCounts] = useState({});
 
- // Function to add an item to the cart
- const addToCart = (itemToAdd) => {
-  setItemCounts((prevItemCounts) => {
-    const newItemCounts = { ...prevItemCounts };
-    if (itemToAdd.name in itemCounts) {
-      newItemCounts[itemToAdd.name] = newItemCounts[itemToAdd.name] + 1;
-    } else {
-      newItemCounts[itemToAdd.name] = 1;
-      setCart((prevCart) => [...prevCart, itemToAdd]);
-    }
-    setTotal((prevTotal) => prevTotal + itemToAdd.price);
-    
-    return newItemCounts;
-  });
+  // set the state variables 
+  const [cart, setCart] = useState([]); // state for cart (array)
+  const [total, setTotal] = useState(0); // state for price total (int)
+  const [itemCounts, setItemCounts] = useState({}); // state for item totals ({name:count})
 
- };
+  // function whenever add cart button is pressed
+  const addToCart = (itemToAdd) => {
 
-// on refresh we need to 
-useEffect(() => {
+    // set the item counts 
+    setItemCounts((prevItemCounts) => {
+      const newItemCounts = { ...prevItemCounts };
+      if (itemToAdd.name in itemCounts) {
+        newItemCounts[itemToAdd.name] = newItemCounts[itemToAdd.name] + 1
+      } else {
+        newItemCounts[itemToAdd.name] = 1
 
-  // reset everything 
-  setCart([]);
-  setTotal(0);
-  setItemCounts({})
+        // add to the cart 
+        setCart((prevCart) => [...prevCart, itemToAdd])
+      }
 
-}, [])
+      // change the total 
+      setTotal((prevTotal) => prevTotal + itemToAdd.price);
+      
+      return newItemCounts;
+    })
+
+  }
+
+ // whenever we refresh
+  useEffect(() => {
+
+    // reset everything 
+    setCart([]);
+    setTotal(0);
+    setItemCounts({})
+
+  }, [])
   return (
     <>
       <div className="App">
